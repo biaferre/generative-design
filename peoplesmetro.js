@@ -14,6 +14,15 @@ for(x=0; x<width + 50; x+= space){
 	random(startB, startB + 90)
 		)
 		
+					
+		strokeWeight(random([0,4]))
+		stroke (
+		  random(startR, startR + 180),
+	random(startG, startG + 90),
+	random(startB, startB + 90)
+		)
+		
+		
 		let a = random(11)
 		
 		textSize(varScale);
@@ -32,9 +41,16 @@ for(x=0; x<width + 50; x+= space){
 	for(y=0; y<height+50;y+= space){
 		
 		fill (
-		  random(startR, startR - 180),
+		  random(startR, startR - 90),
 	random(startG, startG - 90),
-	random(startB, startB - 90)
+	random(startB, startB - 180)
+		)
+		
+		strokeWeight(random([0,4]))
+		stroke (
+		  random(startR, startR - 90),
+	random(startG, startG - 90),
+	random(startB, startB - 180)
 		)
 		
 		let a = random(11)
@@ -51,7 +67,7 @@ c = createCanvas(windowWidth, windowHeight)
 
 symbols = ['╣', '╝','║','╗','╔','╩','═','╬','╚','╠','╦']
 
-background("white");
+background(30);
 
 let varScale = floor(random(100))
 
