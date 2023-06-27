@@ -17,7 +17,7 @@ function setup() {
 
 	
 	biArray = myFont.textToPoints("palavra", width/2, height/2, fontSize,{
-		sampleFactor: 0.3 // default is 0.1
+		sampleFactor: 0.8 // default is 0.1
 	})	
 }
 
@@ -36,40 +36,15 @@ function draw() {
       pop();
     } else {
       push();
+			if (frameCount >= 21) {
+				myPoint.y += random(-0.08,0.08)*frameCount
+				myPoint.x += random(-0.08,0.08)*frameCount
+			}
+
       translate(myPoint.x, myPoint.y);
       strokeWeight(5);
       line(0, 0, 0, 0);
       pop();
     }
   }
-}
-
-function mousePressed() {
-  
-  let canvasMouseX = mouseX - (windowWidth - width) / 2;
-  let canvasMouseY = mouseY - (windowHeight - height) / 2;
-
-  for (let i = 0; i < biArray.length; i++) {
-    let myPoint = biArray[i];
-    let distance = dist(canvasMouseX, canvasMouseY, myPoint.x, myPoint.y);
-    if (distance < tolerance) {
-      selectedPoint = myPoint
-			break
-    }
-  }
-}
-
-function mouseReleased() {
-  selectedPoint = null;
-}
-
-function mouseDragged() {
-  if (selectedPoint) {
-    selectedPoint.x = mouseX - (windowWidth - width) / 2;
-    selectedPoint.y = mouseY - (windowHeight - height) / 2;
-  }
-}
-
-function keyTyped() {
-
 }
