@@ -1,54 +1,24 @@
-let myFont;
-let fontSize; 
-let biArray = [];
-let r=0;
-isPresent = false
-const tolerance = 5;
-
-function preload() {
-  myFont = loadFont('coolvetica rg.otf');
-	fontSize = 200
-}
-
 function setup() {
-	createCanvas(windowWidth, windowHeight);
-	textFont(myFont)
-	textSize(fontSize)
-
-	
-	biArray = myFont.textToPoints("abcde", width/2, height/2, fontSize,{
-		sampleFactor: 0.1 // default is 0.1
-	})	
-
+  smooth();
+  createCanvas(100, 100, WEBGL);
+  // Make a <p> element and put it behind the canvas
+  let p = createP('I am a dom element');
+  p.center();
+  p.style('font-size', '20px');
+  p.style('text-align', 'center');
+  p.style('z-index', '-9999');
 }
 
 function draw() {
-	background(220)	
-	for (let i = 0; i < biArray.length; i++) {
-		push();
-		translate(biArray[i].x ,biArray[i].y);
-		strokeWeight(5);
-		line(0,0,0,0);
-		pop();
-	}
-}
-
-function mouseClicked() {
-  isPresent = false;
-  
-  let canvasMouseX = mouseX - (windowWidth - width) / 2;
-  let canvasMouseY = mouseY - (windowHeight - height) / 2;
-
-  for (let i = 0; i < biArray.length; i++) {
-    let point = biArray[i];
-    let distance = dist(canvasMouseX, canvasMouseY, point.x, point.y);
-    if (distance < tolerance) {
-      isPresent = true;
-      break;
-    }
-  }
-
-  if (isPresent) {
-    print('oiiii');
-  }
+  background(250, 250, 150);
+  fill(15, 195, 185);
+  noStroke();
+  sphere(30);
+  erase();
+  rotateY(frameCount * 0.02);
+  translate(0, 0, 40);
+  torus(15, 5);
+  noErase();
+  describe(`60×60 centered teal sphere, yellow background.
+  Torus rotating around sphere erases to reveal black text underneath.`);
 }
