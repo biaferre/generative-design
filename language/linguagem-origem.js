@@ -3,11 +3,11 @@ let fontSize;
 let biArray = [];
 let r=0;
 const tolerance = 5;
-fontSize = 200
+fontSize = 300
 selectedPoint = null;
 
 function preload() {
-  myFont = loadFont('coolvetica rg.otf');
+  myFont = loadFont('glashou.ttf');
 }
 
 function setup() {
@@ -30,6 +30,7 @@ function draw() {
   for (let i = 0; i < allWords.length; i++) {
     let word = allWords[i];
     let wordArray = word.array;
+		wordLife = 0 // possibility to make new words appear still with form
 		push()
 		translate(random(0, windowWidth), random(0, windowHeight));
 			startR = random(165);
@@ -51,14 +52,16 @@ function draw() {
         pop();
       } else {
         push();
+				lineOrigin = random(-5,5) 
+
         if (frameCount >= 42) {
           myPoint.y += random(-0.1, 0.1) * (frameCount);
           myPoint.x += random(-0.1, 0.1) * (frameCount);
+					lineOrigin += frameCount*0.1
         }
 
         translate(myPoint.x, myPoint.y);
-        strokeWeight(3);
-				lineOrigin = random(-1,1)
+        strokeWeight(2);
         line(lineOrigin, lineOrigin, -lineOrigin, -lineOrigin);
 				rotate(frameCount*0.1)
         pop();
