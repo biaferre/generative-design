@@ -11,8 +11,8 @@ function setup() {
 }
 
 function draw() {
-	strokeWeight(5);
-	curve(a*i, b*-i,mouseX, mouseY, a , b, mouseX + noise(0,100), mouseY + noise(0,100));
+	strokeWeight(3);
+	curve(a*-i, b*i,mouseX, mouseY, a , b, mouseX + random(0,100), mouseY + random(0,100));
 }
 
 function keyPressed() {
